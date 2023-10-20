@@ -8,4 +8,7 @@ Dark = 150-300k
 
 
 Voltage divider rule 
-R = 58k 
+R = 58k //in house 
+R = 2k2 //in lab 
+
+![Alt text](Images/INT0.PNG)
