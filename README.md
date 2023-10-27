@@ -31,3 +31,5 @@ all generated clocks, allowing operation of asynchronous modules only
 Power bank Issue: 
 Time before turn off 35s.
 Need to draw more current so the power bank stays on.
+Solution: 20s off, 1 second on with 150mA
+![Alt text](Images/PB-wakeup.PNG)
