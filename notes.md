@@ -14,7 +14,9 @@ R = 58k //in house
 
 R = 2k2 //in lab 
 
-R = 10k // in hallway for the P_Resistor available in lab 
+R = 10k // in hallway for the P_Resistor available in lab, for PCB manufactured in lab 
+
+R = 6k8 works best for ordered PCB
 
 ![Alt text](Images/INT0.PNG)
 
