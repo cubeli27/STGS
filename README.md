@@ -1,7 +1,5 @@
 # STGS
-### See-Through Glass Sensor
-This repo is a work in progress.
-
+##### See-Through Glass Sensor
 ## Power management and switching power hub 
 
 
@@ -23,7 +21,14 @@ The setup is currently supplied by a power bank as there are no outlets in the d
 
 
 Power bank: 10,000mAh 
+
 Average consumption: 4mA
+
 So now instead of changing the power bank every day regardless of visitation, idealistically the power bank should be able to work 2500 hours which is around 100 days. Of course, this is without anyone passing by ever and turning it on, and nothing in the real world is ideal. 
 
 From 1 day to 100 days is two orders of magnitude difference. As already mentioned factors, I am happy with even one order of magnitude, and in case the power bank needs to be changed every 10 days as well as provide an interactive display for visitors it is useful and beneficial. 
+
+
+![Alt text](Images/IMG_2310.JPG)
+
+The code provided is functional but not optimal, but it works. I will revisit this as soon as I get some time. 
