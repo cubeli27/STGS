@@ -7,10 +7,9 @@ volatile uint16_t ontime = 0;
 volatile uint16_t proximity = 0;
 
 void init() {
-    DDRB |= (1 << PB1); // PB1 as output(ON SWITCH NPN)
-    DDRB |= (1 << PB0); // PB0 as output (IR LED)
-    DDRB &= ~(1 << PB2); // PB2 Interupt pin state check?????
-    //DDRB &= ~(1 << PB3); // PB3 input (poti) not needed ADC and DDR seperate
+    DDRB |= (1 << PB1); // (ON SWITCH NPN)
+    DDRB |= (1 << PB0); // (IR LED)
+    DDRB &= ~(1 << PB2); // Interupt pin
     ADCSRA &= ~(1 << ADEN); // Disable ADC
 
 }
@@ -59,10 +58,10 @@ int main(void)
     PORTB |= (1 << PB0); // IR Led ON
     _delay_ms(100);
     proximity = rxir();
-    if(proximity > 160){
+    if(proximity > 300){
       PORTB |= (1<<PB1);      //Turn ON SWITCH
       PORTB &= ~(1 << PB0);   //Turn OFF IR
-      for(uint16_t i=0;i < ontime;i++){ // Duration 
+      for(uint16_t i=0;i < ontime;i++){ // Duration  //TODO Program Select
         _delay_ms(20);
       }
     }
@@ -70,7 +69,7 @@ int main(void)
     PORTB &= ~(1 << PB1);   //Turn OFF SWITCH
     _delay_ms(10);
     if (PORTB &(1 << PB2)){ //conditions = external interupt not available 
-      //enter_idle();
+      //enter_idle();        // TODO
       //_delay_ms(5000);
     }
     else if(~PORTB &(1 << PB2)){ //PB2 is HIGH or LIGHT = external interrupt available  
@@ -83,8 +82,8 @@ int main(void)
 }
 
 ISR (INT0_vect)        // Interrupt service routine (WAKE UP)
-{ // 50k pulldown in room, 2k2 pulldown in lab, 10k in hallway = photoresistor pullup @ PB2=INT0=PB2 
-  cli();                // dissable global interrupts, good practice
+{ // 50k home, 2k2 lab, ~10k hallway = photoresistor pullup @ PB2=INT0=PB2,  6k8 final (false positive priority)
+  cli();                // dissable global interrupts, good practice?
   MCUCR &= ~(1 << SE);     //Clear sleep bit as per datasheet SLEEP DISABLE
   uint8_t timeoutCounter = 0; // Initialize the counter
   while (~PINB & (1 << PB2) && timeoutCounter<100) // Wait for button release
