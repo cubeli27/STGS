@@ -1,6 +1,6 @@
 # STGS
 ##### See-Through Glass Sensor
-## Power management and switching power hub 
+## Power management and switching hub 
 
 
 My wish was to keep this board as reusable as possible as well as have it still flexible enough if in the future conditions where it is supposed to work change. It's safe to say I prioritized the current application for what is intended for over-reusability. The only reason this board exists is that a dear professor of mine wishes to upgrade the glass display in front of the electronics lab but the power bank that powers (currently 2) devices runs out every day and it is tedious to replace it constantly. Also having devices turned on all the time when most of the time no one is looking is unproductive. 
